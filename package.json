@@ -4,7 +4,8 @@
   "description": "a koa-demo for learning",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -w --display-error-details --mode development --config webpack/webpack.dev.config.js & node index.js",
+    "dev": "webpack -w --display-error-details --mode development --config webpack/webpack.dev.config.js",
+    "server-start": "node index.js",
     "build": "webpack -w -p"
   },
   "keywords": [
@@ -17,6 +18,7 @@
     "antd": "^3.2.3",
     "axios": "^0.18.0",
     "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.4.0",
     "koa-static": "^4.0.2",
     "koa-views": "^6.1.3",

@@ -5,6 +5,10 @@ const home = (router) => {
       title
     })
   })
+
+  router.post('/api/register', async (ctx, next) => {
+    console.log(ctx.request.body)
+  })
 }
 
 module.exports = home
