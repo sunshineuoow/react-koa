@@ -1,6 +1,7 @@
 var path = require('path')
 var globby = require('globby')
 var webpack = require('webpack')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var PATH = {
   src: path.join(__dirname, '../src'),
@@ -9,7 +10,7 @@ var PATH = {
     pattern: ['./src/**/*.js', '!./src/common/**/*.js']
   },
   css: {
-    pattern: ['./src/**/*.less']
+    pattern: ['./src/**/*.less', '!./src/common/**/_*.less']
   }
 }
 
@@ -37,13 +38,18 @@ module.exports = [
       rules: [
         {
           test: /\.less$/,
-          use: ['css-loader', 'postcss-loader', 'less-loader']
+          use: ExtractTextPlugin.extract({
+            use: ['css-loader', 'postcss-loader', 'less-loader']
+          })
         }
       ]
     },
     resolve: {
       extensions: ['.less']
-    }
+    },
+    plugins: [
+      new ExtractTextPlugin('[name].css')
+    ]
   },
   {
     devtool: 'cheap-module-eval-source-map',
@@ -59,6 +65,14 @@ module.exports = [
           test: /\.jsx?$/,
           use: 'babel-loader?cacheDirectory=true',
           exclude: /node_modules/
+        },
+        {
+          test: /\.css/,
+          use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.less$/,
+          use: ['style-loader', 'css-loader', 'less-loader']
         }
       ]
     },
