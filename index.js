@@ -4,14 +4,20 @@ const Router = require('koa-router')
 const path = require('path')
 const initRouter = require('./server/routes')
 const server = require('koa-static')
-const bodyParset = require('koa-bodyparser')
+const bodyParser = require('koa-bodyparser')
+const mongoose = require('mongoose')
 const app = new Koa()
+
+const db = 'mongodb://localhost/test'
+
+mongoose.connect(db)
+
 
 app.use(views(path.join(__dirname, './src'), {
   extension: 'pug'
 }))
 
-app.use(bodyParset())
+app.use(bodyParser())
 
 
 app.use(server(path.join(__dirname, './static')))
