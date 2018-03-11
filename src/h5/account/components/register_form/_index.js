@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
-import ReactDOM from 'react-dom'
 import {Form, Input, Tooltip, Icon, Select, Button} from 'antd'
-import Axios from 'axios'
-
-const axiosInstance = Axios.create()
+import {register} from '../../service/_index'
 
 const FormItem = Form.Item
 
@@ -43,7 +40,7 @@ class RegisterForm extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        axiosInstance.post('/api/register', values)
+        register(values).then(data => {window.location.href = '/h5/index'})
       }
     })
   }
@@ -155,7 +152,4 @@ class RegisterForm extends Component {
 
 const WrappedRegisterForm = Form.create()(RegisterForm);
 
-ReactDOM.render(
-  <WrappedRegisterForm/>,
-  document.getElementById('container')
-)
+export default WrappedRegisterForm

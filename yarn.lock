@@ -1179,6 +1179,10 @@ base64-js@^1.0.2:
   version "1.2.3"
   resolved "http://registry.npm.taobao.org/base64-js/download/base64-js-1.2.3.tgz#fb13668233d9614cf5fb4bce95a9ba4096cdf801"
 
+base64url@2.0.0, base64url@^2.0.0:
+  version "2.0.0"
+  resolved "http://registry.npm.taobao.org/base64url/download/base64url-2.0.0.tgz#eac16e03ea1438eff9423d69baa36262ed1f70bb"
+
 base@^0.11.1:
   version "0.11.2"
   resolved "http://registry.npm.taobao.org/base/download/base-0.11.2.tgz#7bde5ced145b6d551a90db87f83c558b4eb48a8f"
@@ -1350,6 +1354,10 @@ browserslist@^2.1.2:
 bson@~1.0.4:
   version "1.0.5"
   resolved "http://registry.npm.taobao.org/bson/download/bson-1.0.5.tgz#34563b73ff1fde9387c1b9fb5afd845ecc4ba623"
+
+buffer-equal-constant-time@1.0.1:
+  version "1.0.1"
+  resolved "http://registry.npm.taobao.org/buffer-equal-constant-time/download/buffer-equal-constant-time-1.0.1.tgz#f8e71132f7ffe6e01a5c9697a4c6f3e48d5cc819"
 
 buffer-xor@^1.0.3:
   version "1.0.3"
@@ -2254,6 +2262,13 @@ ecc-jsbn@~0.1.1:
   resolved "http://registry.npm.taobao.org/ecc-jsbn/download/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
   dependencies:
     jsbn "~0.1.0"
+
+ecdsa-sig-formatter@1.0.9:
+  version "1.0.9"
+  resolved "http://registry.npm.taobao.org/ecdsa-sig-formatter/download/ecdsa-sig-formatter-1.0.9.tgz#4bc926274ec3b5abb5016e7e1d60921ac262b2a1"
+  dependencies:
+    base64url "^2.0.0"
+    safe-buffer "^5.0.1"
 
 editions@^1.3.3:
   version "1.3.4"
@@ -3653,6 +3668,10 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/isarray/download/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+isemail@1.x.x:
+  version "1.2.0"
+  resolved "http://registry.npm.taobao.org/isemail/download/isemail-1.2.0.tgz#be03df8cc3e29de4d2c5df6501263f1fa4595e9a"
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/isexe/download/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -3692,6 +3711,15 @@ isurl@^1.0.0-alpha5:
   dependencies:
     has-to-string-tag-x "^1.2.0"
     is-object "^1.0.1"
+
+joi@^6.10.1:
+  version "6.10.1"
+  resolved "http://registry.npm.taobao.org/joi/download/joi-6.10.1.tgz#4d50c318079122000fe5f16af1ff8e1917b77e06"
+  dependencies:
+    hoek "2.x.x"
+    isemail "1.x.x"
+    moment "2.x.x"
+    topo "1.x.x"
 
 js-base64@^2.1.9:
   version "2.4.3"
@@ -3806,6 +3834,31 @@ jsonify@~0.0.0:
   version "0.0.0"
   resolved "http://registry.npm.taobao.org/jsonify/download/jsonify-0.0.0.tgz#2c74b6ee41d93ca51b7b5aaee8f503631d252a73"
 
+jsonwebtoken@7.4.1:
+  version "7.4.1"
+  resolved "http://registry.npm.taobao.org/jsonwebtoken/download/jsonwebtoken-7.4.1.tgz#7ca324f5215f8be039cd35a6c45bb8cb74a448fb"
+  dependencies:
+    joi "^6.10.1"
+    jws "^3.1.4"
+    lodash.once "^4.0.0"
+    ms "^2.0.0"
+    xtend "^4.0.1"
+
+jsonwebtoken@^8.2.0:
+  version "8.2.0"
+  resolved "http://registry.npm.taobao.org/jsonwebtoken/download/jsonwebtoken-8.2.0.tgz#690ec3a9e7e95e2884347ce3e9eb9d389aa598b3"
+  dependencies:
+    jws "^3.1.4"
+    lodash.includes "^4.3.0"
+    lodash.isboolean "^3.0.3"
+    lodash.isinteger "^4.0.4"
+    lodash.isnumber "^3.0.3"
+    lodash.isplainobject "^4.0.6"
+    lodash.isstring "^4.0.1"
+    lodash.once "^4.0.0"
+    ms "^2.1.1"
+    xtend "^4.0.1"
+
 jsprim@^1.2.2:
   version "1.4.1"
   resolved "http://registry.npm.taobao.org/jsprim/download/jsprim-1.4.1.tgz#313e66bc1e5cc06e438bc1b7499c2e5c56acb6a2"
@@ -3827,6 +3880,23 @@ jsx-ast-utils@^2.0.1:
   resolved "http://registry.npm.taobao.org/jsx-ast-utils/download/jsx-ast-utils-2.0.1.tgz#e801b1b39985e20fffc87b40e3748080e2dcac7f"
   dependencies:
     array-includes "^3.0.3"
+
+jwa@^1.1.4:
+  version "1.1.5"
+  resolved "http://registry.npm.taobao.org/jwa/download/jwa-1.1.5.tgz#a0552ce0220742cd52e153774a32905c30e756e5"
+  dependencies:
+    base64url "2.0.0"
+    buffer-equal-constant-time "1.0.1"
+    ecdsa-sig-formatter "1.0.9"
+    safe-buffer "^5.0.1"
+
+jws@^3.1.4:
+  version "3.1.4"
+  resolved "http://registry.npm.taobao.org/jws/download/jws-3.1.4.tgz#f9e8b9338e8a847277d6444b1464f61880e050a2"
+  dependencies:
+    base64url "^2.0.0"
+    jwa "^1.1.4"
+    safe-buffer "^5.0.1"
 
 kareem@2.0.5:
   version "2.0.5"
@@ -3884,6 +3954,13 @@ koa-is-json@^1.0.0:
   version "1.0.0"
   resolved "http://registry.npm.taobao.org/koa-is-json/download/koa-is-json-1.0.0.tgz#273c07edcdcb8df6a2c1ab7d59ee76491451ec14"
 
+koa-jwt@^3.3.0:
+  version "3.3.0"
+  resolved "http://registry.npm.taobao.org/koa-jwt/download/koa-jwt-3.3.0.tgz#52c298df7d80e7b8ea27f9aac9916c615abb99c8"
+  dependencies:
+    jsonwebtoken "7.4.1"
+    koa-unless "1.0.0"
+
 koa-router@^7.4.0:
   version "7.4.0"
   resolved "http://registry.npm.taobao.org/koa-router/download/koa-router-7.4.0.tgz#aee1f7adc02d5cb31d7d67465c9eacc825e8c5e0"
@@ -3910,6 +3987,14 @@ koa-static@^4.0.2:
   dependencies:
     debug "^2.6.8"
     koa-send "^4.1.0"
+
+koa-unless@1.0.0:
+  version "1.0.0"
+  resolved "http://registry.npm.taobao.org/koa-unless/download/koa-unless-1.0.0.tgz#5aa57384bc882568afc90ac04852a3d58658aeeb"
+
+koa-unless@^1.0.7:
+  version "1.0.7"
+  resolved "http://registry.npm.taobao.org/koa-unless/download/koa-unless-1.0.7.tgz#b9df375e2b4da3043918d48622520c2c0b79f032"
 
 koa-views@^6.1.3:
   version "6.1.3"
@@ -4086,6 +4171,10 @@ lodash.get@4.4.2:
   version "4.4.2"
   resolved "http://registry.npm.taobao.org/lodash.get/download/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
 
+lodash.includes@^4.3.0:
+  version "4.3.0"
+  resolved "http://registry.npm.taobao.org/lodash.includes/download/lodash.includes-4.3.0.tgz#60bb98a87cb923c68ca1e51325483314849f553f"
+
 lodash.isarguments@^3.0.0:
   version "3.1.0"
   resolved "http://registry.npm.taobao.org/lodash.isarguments/download/lodash.isarguments-3.1.0.tgz#2f573d85c6a24289ff00663b491c1d338ff3458a"
@@ -4093,6 +4182,26 @@ lodash.isarguments@^3.0.0:
 lodash.isarray@^3.0.0:
   version "3.0.4"
   resolved "http://registry.npm.taobao.org/lodash.isarray/download/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
+
+lodash.isboolean@^3.0.3:
+  version "3.0.3"
+  resolved "http://registry.npm.taobao.org/lodash.isboolean/download/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+
+lodash.isinteger@^4.0.4:
+  version "4.0.4"
+  resolved "http://registry.npm.taobao.org/lodash.isinteger/download/lodash.isinteger-4.0.4.tgz#619c0af3d03f8b04c31f5882840b77b11cd68343"
+
+lodash.isnumber@^3.0.3:
+  version "3.0.3"
+  resolved "http://registry.npm.taobao.org/lodash.isnumber/download/lodash.isnumber-3.0.3.tgz#3ce76810c5928d03352301ac287317f11c0b1ffc"
+
+lodash.isplainobject@^4.0.6:
+  version "4.0.6"
+  resolved "http://registry.npm.taobao.org/lodash.isplainobject/download/lodash.isplainobject-4.0.6.tgz#7c526a52d89b45c45cc690b88163be0497f550cb"
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "http://registry.npm.taobao.org/lodash.isstring/download/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
 lodash.keys@^3.1.2:
   version "3.1.2"
@@ -4105,6 +4214,10 @@ lodash.keys@^3.1.2:
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "http://registry.npm.taobao.org/lodash.memoize/download/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+
+lodash.once@^4.0.0:
+  version "4.1.1"
+  resolved "http://registry.npm.taobao.org/lodash.once/download/lodash.once-4.1.1.tgz#0dd3971213c7c56df880977d504c88fb471a97ac"
 
 lodash.throttle@^4.0.0:
   version "4.1.1"
@@ -4382,7 +4495,7 @@ mixin-deep@^1.2.0:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x, moment@^2.19.3:
+moment@2.x, moment@2.x.x, moment@^2.19.3:
   version "2.21.0"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.21.0.tgz#2a114b51d2a6ec9e6d83cf803f838a878d8a023a"
 
@@ -4446,6 +4559,10 @@ mquery@3.0.0:
 ms@2.0.0:
   version "2.0.0"
   resolved "http://registry.npm.taobao.org/ms/download/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
+
+ms@^2.0.0, ms@^2.1.1:
+  version "2.1.1"
+  resolved "http://registry.npm.taobao.org/ms/download/ms-2.1.1.tgz#30a5864eb3ebb0a66f2ebe6d727af06a09d86e0a"
 
 multimatch@^2.0.0:
   version "2.1.0"
@@ -6852,6 +6969,12 @@ token-stream@0.0.1:
   version "0.0.1"
   resolved "http://registry.npm.taobao.org/token-stream/download/token-stream-0.0.1.tgz#ceeefc717a76c4316f126d0b9dbaa55d7e7df01a"
 
+topo@1.x.x:
+  version "1.1.0"
+  resolved "http://registry.npm.taobao.org/topo/download/topo-1.1.0.tgz#e9d751615d1bb87dc865db182fa1ca0a5ef536d5"
+  dependencies:
+    hoek "2.x.x"
+
 tough-cookie@~2.3.0, tough-cookie@~2.3.3:
   version "2.3.4"
   resolved "http://registry.npm.taobao.org/tough-cookie/download/tough-cookie-2.3.4.tgz#ec60cee38ac675063ffc97a5c18970578ee83655"
@@ -7312,7 +7435,7 @@ write@^0.2.1:
   dependencies:
     mkdirp "^0.5.1"
 
-xtend@^4.0.0, xtend@~4.0.0, xtend@~4.0.1:
+xtend@^4.0.0, xtend@^4.0.1, xtend@~4.0.0, xtend@~4.0.1:
   version "4.0.1"
   resolved "http://registry.npm.taobao.org/xtend/download/xtend-4.0.1.tgz#a5c6d532be656e23db820efb943a1f04998d63af"
 

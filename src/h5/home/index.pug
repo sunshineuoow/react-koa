@@ -1,0 +1,14 @@
+extends ../../common/html/base
+
+block title
+  title=title
+
+block main
+  if name
+    h2 hello #{name}
+  else
+    a(href='/h5/account/index') 立即注册
+  div(id='container')=root
+
+block js
+  script(src='../webpack/h5/home/index.js')

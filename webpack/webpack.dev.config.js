@@ -6,11 +6,12 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var PATH = {
   src: path.join(__dirname, '../src'),
   dst: path.join(__dirname, '../static/webpack'),
+  server_dst: path.join(__dirname, '../static/webpack/server'),
   js: {
-    pattern: ['./src/**/*.js', '!./src/common/**/*.js']
+    pattern: ['./src/**/[^_]*.js', '!./src/common/**/*.js']
   },
   css: {
-    pattern: ['./src/**/*.less', '!./src/common/**/_*.less']
+    pattern: ['./src/**/[^_]*.less', '!./src/common/**/_*.less']
   }
 }
 
@@ -22,6 +23,47 @@ function getEntries(type) {
     list[fileName] = path.resolve(PATH.src, '../', file)
     return list
   }, {})
+}
+
+const serverConfig = {
+  target: 'node',
+  entry: getEntries('js'),
+  output: {
+    path: PATH.server_dst,
+    filename: '[name].js',
+    libraryTarget: 'commonjs2'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader?cacheDirectory=true',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css/,
+        use: ['css-loader']
+      },
+      {
+        test: /\.less$/,
+        use: ['css-loader', 'less-loader']
+      }
+    ]
+  },
+  resolve: {
+    modules: [
+      PATH.src,
+      'node_modules'
+    ],
+    extensions: ['.web.js', '.js', '.json', '.less']
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+      }
+    })
+  ]
 }
 
 
@@ -52,7 +94,6 @@ module.exports = [
     ]
   },
   {
-    devtool: 'cheap-module-eval-source-map',
     context: path.resolve(__dirname),
     entry: getEntries('js'),
     output: {
@@ -94,5 +135,6 @@ module.exports = [
     //   react: 'var React',
     //   'react-dom': 'var ReactDom'
     // }
-  }
+  },
+  serverConfig
 ]
