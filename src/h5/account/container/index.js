@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
 import LoginForm from '../components/login_form/_index'
 import RegisterForm from '../components/register_form/_index'
+import './_index.less'
 
-class AccountForm extends Component {
+export default class AccountForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -38,5 +39,3 @@ class AccountForm extends Component {
     )
   }
 }
-
-export default <AccountForm />

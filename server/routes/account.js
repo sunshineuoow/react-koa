@@ -1,19 +1,18 @@
 const User = require('../model/User')
 const sha1 = require('sha1')
 const {createToken} = require('../utils/token')
-const {renderToString} = require('react-dom/server')
-const LoginPage = require('../../static/webpack/server/h5/account/container/index').default
+const getComponent = require('../utils/get_component')
 
 const account = (router) => {
   router.get('/h5/account/index', async (ctx, next) => {
+    const root = await getComponent('account')
     await ctx.render('account/index', {
-      root: renderToString(LoginPage)
+      root
     })
   })
 
   router.get('/api/user', async (ctx, next) => {
-    let data = await User.findOneByPhone(ctx.state.user.phone)
-    ctx.body = {r: true, data: data}
+    ctx.body = {r: true, data: 111}
   })
 
   router.post('/api/account/login', async (ctx, next) => {
