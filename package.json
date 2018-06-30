@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "webpack -w --display-error-details --mode development --config webpack/webpack.dev.config.js",
     "server-start": "node index.js",
-    "build": "webpack --mode production --config webpack/webpack.prod.config.js"
+    "build": "webpack --display-error-details --mode production  --config webpack/webpack.prod.config.js"
   },
   "keywords": [
     "koa",
