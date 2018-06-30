@@ -2,10 +2,10 @@
   "name": "koa-demo",
   "version": "1.0.0",
   "description": "a koa-demo for learning",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "dev": "webpack -w --display-error-details --mode development --config webpack/webpack.dev.config.js",
-    "server-start": "node index.js",
+    "server-start": "node server/index.js",
     "build": "webpack --display-error-details --mode production  --config webpack/webpack.prod.config.js"
   },
   "keywords": [

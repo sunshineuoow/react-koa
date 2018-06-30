@@ -6,7 +6,7 @@ const getComponent = require('../utils/get_component')
 const account = (router) => {
   router.get('/h5/account/index', async (ctx, next) => {
     const root = await getComponent('account')
-    await ctx.render('account/index', {
+    await ctx.render('account', {
       root
     })
   })
