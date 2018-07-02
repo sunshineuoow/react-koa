@@ -10,7 +10,7 @@ const createToken = (user) => {
     phone: user.phone,
     name: user.nickname
   }
-  return jwt.sign(opts, config.secret, {expiresIn: '24h'})
+  return jwt.sign(opts, config.secret, {expiresIn: '48h'})
 }
 
 module.exports = {

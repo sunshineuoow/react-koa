@@ -41,7 +41,9 @@ class LoginForm extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        login(values).then(data => {window.location.href = '/h5/index'})
+        login(values).then(data => {
+          window.location.href = '/h5/index'
+        })
       }
     })
   }
@@ -73,7 +75,7 @@ class LoginForm extends Component {
         >
           {getFieldDecorator('password', {
             rules: [
-              {required: true, message: 'Please input your password!'},
+              {required: true, message: 'Please input your password!'}
             ]
           })(<Input type="password"/>)}
         </FormItem>

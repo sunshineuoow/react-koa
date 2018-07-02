@@ -1,15 +1,17 @@
-const UserModel = require('./schema/user')
+const { query } = require('../lib/mysql')
 
-const User = {
-  // 注册
-  async signup(user) {
-    return await new UserModel(user).save()
-  },
-  // 根据手机号查找用户
-  async findOneByPhone(phone) {
-    return UserModel.findOne({phone: phone}).exec()
+class User {
+  // 添加用户
+  async addUser(values) {
+    const _sql = 'INSERT INTO users(name, pass, phone, email) values(?, ?, ?, ?);'
+    return query(_sql, values)
+  }
+
+  // 查找用户
+  async findUser(account) {
+    const _sql = `SELECT * FROM users WHERE phone='${account}' OR name='${account}';`
+    return await query(_sql)
   }
 }
 
-module.exports = User
-
+module.exports = new User()

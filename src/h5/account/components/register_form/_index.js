@@ -40,7 +40,9 @@ class RegisterForm extends Component {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        register(values).then(data => {window.location.href = '/h5/index'})
+        register(values).then(data => {
+          window.location.href = '/h5/index'
+        })
       }
     })
   }
@@ -150,6 +152,6 @@ class RegisterForm extends Component {
   }
 }
 
-const WrappedRegisterForm = Form.create()(RegisterForm);
+const WrappedRegisterForm = Form.create()(RegisterForm)
 
 export default WrappedRegisterForm
