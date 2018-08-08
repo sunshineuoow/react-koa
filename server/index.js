@@ -26,4 +26,4 @@ app.use(tokenCheck())
 
 app.use(initRouter(Router))
 
-app.listen(6666, () => {console.log('server is running')})
+app.listen(10000, () => {console.log('server is running')})
