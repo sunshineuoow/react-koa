@@ -1,12 +1,11 @@
 var path = require('path')
 var globby = require('globby')
-var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var PATH = {
   src: path.join(__dirname, '../src'),
-  dst: path.join(__dirname, '../static/webpack'),
-  server_dst: path.join(__dirname, '../static/webpack/server'),
+  dst: path.join(__dirname, '../static'),
+  server_dst: path.join(__dirname, '../static/server'),
   js: {
     pattern: ['./src/**/[^_]*.js', '!./src/common/**/*.js', '!./src/**/container/*.js']
   },
@@ -28,11 +27,51 @@ function getEntries(type) {
 
 const serverConfig = {
   target: 'node',
+  mode: 'development',
   entry: getEntries('server_js'),
   output: {
     path: PATH.server_dst,
     filename: '[name].js',
     libraryTarget: 'commonjs2'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader?cacheDirectory=true',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css/,
+        use: ['css-loader']
+      },
+      {
+        test: /\.less$/,
+        use: ['css-loader', 'less-loader']
+      },
+      {
+        test: /\.(eot|woff|woff2|svg|ttf|png|jpg|jpeg|gif)(\?v=[\d\.]+)?$/,
+        use: 'file-loader?name=/build/files/[name].[ext]',
+        exclude: /node_modules\/antd/
+      }
+    ]
+  },
+  resolve: {
+    modules: [
+      PATH.src,
+      'node_modules'
+    ],
+    extensions: ['.web.js', '.js', '.json', '.less']
+  }
+}
+
+const clientConfig = {
+  mode: 'development',
+  context: path.resolve(__dirname),
+  entry: getEntries('js'),
+  output: {
+    path: PATH.dst,
+    filename: '[name].js'
   },
   module: {
     rules: [
@@ -70,58 +109,8 @@ const serverConfig = {
     extensions: ['.web.js', '.js', '.json', '.less']
   },
   plugins: [
-    new ExtractTextPlugin('[name].css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-      }
-    })
+    new ExtractTextPlugin('[name].css')
   ]
-}
-
-const clientConfig = {
-  context: path.resolve(__dirname),
-  entry: getEntries('js'),
-  output: {
-    path: PATH.dst,
-    filename: '[name].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.jsx?$/,
-        use: 'babel-loader?cacheDirectory=true',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.css/,
-        use: ['css-loader']
-      },
-      {
-        test: /\.less$/,
-        use: ['css-loader', 'less-loader']
-      },
-      {
-        test: /\.(eot|woff|woff2|svg|ttf|png|jpg|jpeg|gif)(\?v=[\d\.]+)?$/,
-        use: 'file-loader?name=/build/files/[name].[ext]',
-        exclude: /node_modules\/antd/
-      }
-    ]
-  },
-  resolve: {
-    modules: [
-      PATH.src,
-      'node_modules'
-    ],
-    extensions: ['.web.js', '.js', '.json', '.less']
-  },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-      }
-    })
-  ],
   // externals: {
   //   react: 'var React',
   //   'react-dom': 'var ReactDom'
