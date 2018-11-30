@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
-import LoginForm from '../components/login_form/_index'
-import RegisterForm from '../components/register_form/_index'
-import './_index.less'
+import React, { Component } from 'react'
+import LoginForm from '../components/LoginForm'
+import RegisterForm from '../components/ReigsterForm'
+import './index.less'
 
 export default class AccountForm extends Component {
   constructor(props) {

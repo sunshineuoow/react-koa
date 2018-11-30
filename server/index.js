@@ -1,4 +1,3 @@
-require('./lib/initdb')
 const Koa = require('koa')
 const views = require('koa-views')
 const Router = require('koa-router')

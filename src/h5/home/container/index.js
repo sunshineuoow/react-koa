@@ -1,9 +1,9 @@
-import React, {Component} from 'react'
-import {getUserInfo} from '../service/_index'
-import {Layout, Menu, Breadcrumb} from 'antd'
-import './_index.less'
+import React, { Component } from 'react'
+import { getUserInfo } from '../service'
+import { Layout, Menu, Breadcrumb } from 'antd'
+import './index.less'
 
-const {Header, Content, Footer} = Layout
+const { Header, Content, Footer } = Layout
 
 export default class HomePage extends Component {
   constructor(props) {
@@ -14,7 +14,7 @@ export default class HomePage extends Component {
   }
 
   componentDidMount() {
-    getUserInfo().then(data => this.setState({data}))
+    getUserInfo().then(data => this.setState({ data }))
   }
 
   render() {
@@ -25,7 +25,7 @@ export default class HomePage extends Component {
             <Menu
               theme="dark"
               mode="horizontal"
-              defaultSelectedKeys={['2']}
+              defaultSelectedKeys={[ '2' ]}
               style={{ lineHeight: '64px' }}
             >
               <Menu.Item key="1">首页</Menu.Item>

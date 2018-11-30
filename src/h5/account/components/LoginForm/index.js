@@ -1,18 +1,18 @@
-import React, {Component} from 'react'
-import {Form, Input, Button} from 'antd'
-import {login} from '../../service/_index'
+import React, { Component } from 'react'
+import { Form, Input, Button } from 'antd'
+import { login } from '../../service'
 
 
 const FormItem = Form.Item
 
 const formItemLayout = {
   labelCol: {
-    xs: {span: 24},
-    sm: {span: 8}
+    xs: { span: 24 },
+    sm: { span: 8 }
   },
   wrapperCol: {
-    xs: {span: 24},
-    sm: {span: 12}
+    xs: { span: 24 },
+    sm: { span: 12 }
   }
 }
 
@@ -37,37 +37,37 @@ class LoginForm extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        login(values).then(data => {
+        login(values).then(() => {
           window.location.href = '/h5/index'
         })
       }
     })
   }
 
-  handleConfirmBlur(e) {
+  handleConfirmBlur = e => {
     const value = e.target.value
     this.setState({ confirmDirty: this.state.confirmDirty || !!value })
   }
 
   render() {
-    const {getFieldDecorator} = this.props.form
+    const { getFieldDecorator } = this.props.form
 
     return (
-      <Form onSubmit={this.handleSubmit.bind(this)}>
+      <Form onSubmit={this.handleSubmit}>
         <FormItem
           {...formItemLayout}
-          label="Account"
+          label="Username"
 
         >
-          {getFieldDecorator('account', {
+          {getFieldDecorator('username', {
             rules: [
-              {required: true, message: 'Please input your phone number!'}
+              { required: true, message: 'Please input your phone number!' }
             ]
-          })(<Input />)}
+          })(<Input/>)}
         </FormItem>
         <FormItem
           {...formItemLayout}
@@ -75,9 +75,9 @@ class LoginForm extends Component {
         >
           {getFieldDecorator('password', {
             rules: [
-              {required: true, message: 'Please input your password!'}
+              { required: true, message: 'Please input your password!' }
             ]
-          })(<Input type="password"/>)}
+          })(<Input type="password" onBlur={this.handleConfirmBlur}/>)}
         </FormItem>
         <FormItem {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">Login</Button>

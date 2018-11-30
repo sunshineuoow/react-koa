@@ -7,7 +7,7 @@ var PATH = {
   dst: path.join(__dirname, '../static'),
   server_dst: path.join(__dirname, '../static/server'),
   js: {
-    pattern: ['./src/**/[^_]*.js', '!./src/common/**/*.js', '!./src/**/container/*.js']
+    pattern: ['./src/**/*.jsx']
   },
   server_js: {
     pattern: ['./src/**/container/*.js']

@@ -1,17 +1,26 @@
-const { query } = require('../lib/mysql')
+const Sequelize = require('sequelize')
+const db = require('../db')
 
-class User {
-  // 添加用户
-  async addUser(values) {
-    const _sql = 'INSERT INTO users(name, pass, phone, email) values(?, ?, ?, ?);'
-    return query(_sql, values)
-  }
 
-  // 查找用户
-  async findUser(account) {
-    const _sql = `SELECT * FROM users WHERE phone='${account}' OR name='${account}';`
-    return await query(_sql)
+class User extends Sequelize.Model {
+  static init(sequelize, DataTypes) {
+    return super.init(
+      {
+        id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+        username: { type: DataTypes.STRING(64) },
+        email: { type: DataTypes.STRING(120) },
+        password: { type: DataTypes.STRING(128) }
+      },
+      {
+        indexes: [ { unique: true, fields: ['username'] }, { unique: true, fields: ['email'] } ],
+        tableName: 'users',
+        sequelize
+      }
+    )
   }
 }
 
-module.exports = new User()
+const UserModel = User.init(db, Sequelize)
+UserModel.sync({ force: false })
+
+module.exports = UserModel

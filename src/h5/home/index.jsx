@@ -1,8 +1,8 @@
 import React from 'react'
-import {hydrate} from 'react-dom'
+import { hydrate } from 'react-dom'
 import HomePage from './container'
 
 hydrate(
-  <HomePage />,
+  <HomePage/>,
   document.getElementById('container')
 )
