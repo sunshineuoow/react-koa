@@ -1,9 +1,30 @@
 @import '../../../common/css/_base';
 
 #container {
-  padding: 42px 24px 50px;
+  padding: 20px;
+  .login-form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .login-form-forgot {
+    float: right;
+  }
+  .login-form-button {
+    width: 100%;
+  }
+  .register-form {
+    margin: 0 auto;
+    .ant-row:last-of-type {
+      span {
+        display: inline-block;
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  }
 }
-
 
 .toggle-btn {
   text-align: center;

@@ -4,14 +4,17 @@ const { createToken } = require('../utils/token')
 const Error = require('../controller/error')
 
 const account = router => {
-  router.get('/h5/account/index', async ctx => {
+
+  router.get('/h5/account', async ctx => {
     const root = await getComponent('account')
     await ctx.render('account', { root })
   })
 
+
   router.get('/api/user', async ctx => {
     ctx.body = { r: true, data: 111 }
   })
+
 
   router.post('/api/account/login', async ctx => {
     const userData = ctx.request.body
@@ -23,6 +26,7 @@ const account = router => {
       ctx.body = { r: false, msg }
     }
   })
+
 
   router.get('/api/account/logout', async ctx => {
     ctx.cookies.set('_gt', '', { singed: true, maxAge: 0 })

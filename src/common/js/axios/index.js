@@ -1,5 +1,5 @@
 import Axios from 'axios'
-import {message} from 'antd'
+import { message } from 'antd'
 
 const axiosInstance = Axios.create()
 
@@ -8,9 +8,7 @@ axiosInstance.interceptors.response.use(res => {
     return res.data.data
   } else {
     if (res.data.msg) {
-      let errorHandler
-      if (res.data.code === 4) errorHandler = () => {window.location.href = '/h5/account/index'}
-      message.error(res.data.msg, 2, errorHandler)
+      message.error(res.data.msg, 2)
     } else {
       return Promise.reject(res)
     }

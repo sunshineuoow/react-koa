@@ -11,7 +11,7 @@ const formItemLayout = {
   },
   wrapperCol: {
     xs: { span: 24 },
-    sm: { span: 12 }
+    sm: { span: 8 }
   }
 }
 
@@ -22,7 +22,7 @@ const tailFormItemLayout = {
       offset: 0
     },
     sm: {
-      span: 16,
+      span: 8,
       offset: 8
     }
   }
@@ -41,7 +41,7 @@ class RegisterForm extends Component {
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         register(values).then(() => {
-          window.location.href = '/h5/index'
+          window.location.href = '/'
         })
       }
     })
@@ -73,7 +73,7 @@ class RegisterForm extends Component {
     const { getFieldDecorator } = this.props.form
 
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} className="register-form">
         <FormItem
           {...formItemLayout}
           label={

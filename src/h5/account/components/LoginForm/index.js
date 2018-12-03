@@ -1,86 +1,50 @@
-import React, { Component } from 'react'
-import { Form, Input, Button } from 'antd'
+import React from 'react'
+import { Form, Input, Button, Icon, Checkbox } from 'antd'
 import { login } from '../../service'
-
 
 const FormItem = Form.Item
 
-const formItemLayout = {
-  labelCol: {
-    xs: { span: 24 },
-    sm: { span: 8 }
-  },
-  wrapperCol: {
-    xs: { span: 24 },
-    sm: { span: 12 }
-  }
-}
-
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0
-    },
-    sm: {
-      span: 16,
-      offset: 8
-    }
-  }
-}
-
-class LoginForm extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      confirmDirty: false
-    }
-  }
-
+class LoginForm extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
         login(values).then(() => {
-          window.location.href = '/h5/index'
+          window.location.href = '/'
         })
       }
     })
   }
 
-  handleConfirmBlur = e => {
-    const value = e.target.value
-    this.setState({ confirmDirty: this.state.confirmDirty || !!value })
-  }
-
   render() {
     const { getFieldDecorator } = this.props.form
-
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <FormItem
-          {...formItemLayout}
-          label="Username"
-
-        >
-          {getFieldDecorator('username', {
-            rules: [
-              { required: true, message: 'Please input your phone number!' }
-            ]
-          })(<Input/>)}
+      <Form onSubmit={this.handleSubmit} className="login-form">
+        <FormItem>
+          {getFieldDecorator('userName', {
+            rules: [ { required: true, message: 'Please input your username!' } ]
+          })(
+            <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }}/>} placeholder="Username"/>
+          )}
         </FormItem>
-        <FormItem
-          {...formItemLayout}
-          label="Password"
-        >
+        <FormItem>
           {getFieldDecorator('password', {
-            rules: [
-              { required: true, message: 'Please input your password!' }
-            ]
-          })(<Input type="password" onBlur={this.handleConfirmBlur}/>)}
+            rules: [ { required: true, message: 'Please input your Password!' } ]
+          })(
+            <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }}/>} type="password" placeholder="Password"/>
+          )}
         </FormItem>
-        <FormItem {...tailFormItemLayout}>
-          <Button type="primary" htmlType="submit">Login</Button>
+        <FormItem>
+          {getFieldDecorator('remember', {
+            valuePropName: 'checked',
+            initialValue: true
+          })(
+            <Checkbox>Remember me</Checkbox>
+          )}
+          <a className="login-form-forgot" href="">Forgot password</a>
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
         </FormItem>
       </Form>
     )
